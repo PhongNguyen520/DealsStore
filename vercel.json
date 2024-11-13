@@ -1,11 +1,28 @@
 {
-    "functions": {
-      "api/**/*.php": {
-        "runtime": "vercel-php@0.5.2"
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.php",
+        "use": "@vercel/php"
+      },
+      {
+        "src": "admin/*.php",
+        "use": "@vercel/php"
+      },
+      {
+        "src": "models/*.php",
+        "use": "@vercel/php"
       }
-    },
+    ],
     "routes": [
-      { "src": "/(.*)",  "dest": "/index.php" },
-      { "src": "/css/style.css", "dest": "/css/style.css" },
-      { "src": "/js/script.js", "dest": "/js/script.js" }]
+      {
+        "src": "/(.*).php",
+        "dest": "/$1.php"
+      },
+      {
+        "src": "/",
+        "dest": "index.php"
+      }
+    ]
   }
+  
